@@ -1,16 +1,18 @@
-import javax.lang.model.util.Elements;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Deque;
 
 import static java.lang.Integer.max;
 
 /**
  * Created by driabchenko on 19/06/15.
  */
-public class Test {
+public class Parentheses {
     public static void main(String[] args) {
         String[] str = {
                 "((()))",
-                ")((())))",
+                "(()(()))",
+                ")(((((()))))))",
                 "))((",
                 "))(())(())()()()))"
         };
@@ -24,7 +26,7 @@ public class Test {
         int len = 0;
         int[] dp = new int[n];
 
-        for (int i = 1; i < n; i ++) {
+        for (int i = 2; i < n; i ++) {
             if (s.charAt(i) == ')') {
                 if (s.charAt(i - 1) == '(') {
                     dp[i] = 2;
@@ -41,8 +43,8 @@ public class Test {
                     }
                 }
             }
-//            System.out.println(Arrays.toString(dp) + " ");
             len = max(len, dp[i]);
+            System.out.println(Arrays.toString(dp) + " ");
         }
         return len;
     }
@@ -55,12 +57,14 @@ public class Test {
         for (int i = 0; i < s.length(); i ++) {
             if (s.charAt(i) == ')' && !stack.isEmpty() && s.charAt(stack.peek()) == '(') {
                 stack.pop();
-                int idx = stack.isEmpty() ? -1 : stack.peek();
-                len = max(len, i - idx);
+                if (stack.isEmpty()) {
+                    len = max(len, i + 1);
+                } else {
+                    len = max(len, i - stack.peek());
+                }
             } else {
                 stack.push(i);
             }
-            System.out.println(s.substring(0, i + 1) + ": " + Arrays.toString(stack.toArray()));
         }
 
         return len;
