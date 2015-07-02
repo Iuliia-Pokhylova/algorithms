@@ -5,71 +5,79 @@ import org.junit.Assert;
  */
 public class KaratsubaMultiplication {
     public static void main(String[] args) {
-        int[][] input = {
-                {1341, 4631},
-                {5678, 1234}
+        long[][] input = {
+                {198, 110},
+                //{198, 110},
+                //{99999999, 55555555},
+                //{5678, 1234}
         };
-        for (int[] mp : input) {
+        for (long[] mp : input) {
             counter = counter2 = 0;
-            int res = multiply(mp[0], mp[1]);
-            Assert.assertEquals(res, multiply2(mp[0], mp[1]));
-            Assert.assertEquals(res, mp[0] * mp[1]);
+            long res = multiply(mp[0], mp[1]);
+            //Assert.assertEquals(mp[0] * mp[1], res);
+            res = multiply2(mp[0], mp[1]);
+            Assert.assertEquals(mp[0] * mp[1], res);
             System.out.printf("%d, counted by %d recursions in first case and %d recursions in second\n", res, counter, counter2);
         }
     }
 
-    public static int counter, counter2;
+    public static long counter, counter2;
 
-    public static int multiply(int x, int y) {
+    public static long multiply(long x, long y) {
         counter ++;
         if (x == 0 || y == 0) {
             return 0;
         }
 
-        int n = Math.min(ilen(x), ilen(y));
+        long n = Math.min(ilen(x), ilen(y));
         if (n == 1) {
             return x * y;
         }
 
-        int[] a_b = split(x, n);
-        int[] c_d = split(y, n);
+        n = Math.max(ilen(x), ilen(y));
 
-        int ac = multiply(a_b[0], c_d[0]);
-        int bd = multiply(a_b[1], c_d[1]);
-        int adbc = multiply(a_b[0] + a_b[1], c_d[0] + c_d[1]) - ac - bd;
+        long[] a_b = split(x, n);
+        long[] c_d = split(y, n);
 
-        return ac * (int) Math.pow(10, n) + adbc * (int) Math.pow(10, n / 2) + bd;
+        long ac = a_b[0] * c_d[0];//multiply(a_b[0], c_d[0]);
+        long bd = a_b[1] * c_d[1]; //multiply(a_b[1], c_d[1]);
+        long adbc = (a_b[0] + a_b[1]) * (c_d[0] + c_d[1]) - ac - bd;//multiply(a_b[0] + a_b[1], c_d[0] + c_d[1]) - ac - bd;
+
+        return ac * (long) Math.pow(10, n) + adbc * (long) Math.pow(10, n / 2) + bd;
     }
 
-    public static int multiply2(int x, int y) {
+    public static long multiply2(long x, long y) {
         counter2 ++;
         if (x == 0 || y == 0) {
             return 0;
         }
 
-        int n = Math.min(ilen(x), ilen(y));
+        long n = Math.min(ilen(x), ilen(y));
         if (n == 1) {
             return x * y;
         }
 
-        int[] a_b = split(x, n);
-        int[] c_d = split(y, n);
+        n = Math.max(ilen(x), ilen(y));
 
-        int ac = multiply2(a_b[0], c_d[0]);
-        int bd = multiply2(a_b[1], c_d[1]);
-        int ad = multiply2(a_b[0], c_d[1]);
-        int bc = multiply2(a_b[1], c_d[0]);
+        long[] a_b = split(x, n);
+        long[] c_d = split(y, n);
 
-        return ac * (int) Math.pow(10, n) + (ad + bc) * (int) Math.pow(10, n / 2) + bd;
+
+        long ac = multiply2(a_b[0], c_d[0]);
+        long bd = multiply2(a_b[1], c_d[1]);
+        long ad = multiply2(a_b[0], c_d[1]);
+        long bc = multiply2(a_b[1], c_d[0]);
+
+        return ac * (long) Math.pow(10, n) + (ad + bc) * (long) Math.pow(10, n / 2) + bd;
     }
 
-    private static int[] split(int num, int len) {
-        int pow = (int) Math.pow(10, len - len / 2);
+    private static long[] split(long num, long len) {
+        long pow = (long) Math.pow(10, len / 2);
 
-        return new int[] {num / pow, num % pow};
+        return new long[] {num / pow, num % pow};
     }
 
-    private static int ilen(int num) {
-        return (num == 0) ? 1 : (int) Math.log10(num) + 1;
+    private static long ilen(long num) {
+        return (num == 0) ? 1 : (long) Math.log10(num) + 1;
     }
 }
