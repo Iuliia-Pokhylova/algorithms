@@ -15,6 +15,10 @@ public class KaratsubaMultiplication {
     }
 
     public static int multiply(int x, int y) {
+        if (x == 0 || y == 0) {
+            return 0;
+        }
+
         int n = Math.min(ilen(x), ilen(y));
         if (n == 1) {
             return x * y;
