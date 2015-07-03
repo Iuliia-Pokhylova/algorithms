@@ -1,3 +1,5 @@
+package com.epam.algorithms.leetcode;
+
 /**
  * Created by driabchenko on 21/06/15.
  */

@@ -1,3 +1,5 @@
+package com.epam.algorithms.leetcode;
+
 /*
     http://www.programcreek.com/2013/01/leetcode-distinct-subsequences-total-java/
  */

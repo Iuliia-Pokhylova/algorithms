@@ -1,4 +1,4 @@
-package lang;
+package com.epam.algorithms.lang;
 
 public class ListNode {
     public int val;
