@@ -1,4 +1,6 @@
-import lang.ListNode;
+package com.epam.algorithms.leetcode;
+
+import com.epam.algorithms.lang.ListNode;
 
 /*
     https://leetcode.com/submissions/detail/30820454/

@@ -1,3 +1,5 @@
+package com.epam.algorithms.leetcode;
+
 import com.google.common.collect.Lists;
 
 import java.util.ArrayList;

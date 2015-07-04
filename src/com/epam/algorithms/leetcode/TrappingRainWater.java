@@ -1,3 +1,5 @@
+package com.epam.algorithms.leetcode;
+
 /*
     https://leetcode.com/submissions/detail/30922321/
  */
