@@ -11,25 +11,14 @@ public class MergeSort {
         int[] unsorted = {32, 39, 21, 45, 23, 3};
         System.out.println("Unsorted " + Arrays.toString(unsorted));
         unsorted = sort(unsorted);
-
         System.out.println("Sorted " + Arrays.toString(unsorted));
 
     }
 
     public static int[] sort(int[] nums) {
         if (nums.length <= 1) return nums;
-
-        int[] left, right;
-
         int middle = nums.length / 2;
-        left = Arrays.copyOfRange(nums, 0, middle);
-        right = Arrays.copyOfRange(nums, middle, nums.length);
-
-        //System.out.println("Left " + Arrays.toString(left));
-        //System.out.println("Right " + Arrays.toString(right));
-
-
-        return merge(sort(left), sort(right));
+        return merge(sort(Arrays.copyOfRange(nums, 0, middle)), sort(Arrays.copyOfRange(nums, middle, nums.length)));
     }
 
     public static int[] merge(int[] left, int[] right) {
