@@ -28,7 +28,7 @@ public class MapReduce {
         }
     }
 
-    public void execute() {
+    public void mapReduce() {
         List<String> words = Lists.newArrayList("foo", "baz", "bar", "dar", "foo", "bar", "baz", "bar");
 
         System.out.println(Arrays.toString(twoMostPopular(words).toArray()));
@@ -40,9 +40,7 @@ public class MapReduce {
         this.comparator = comparator;
     }
 
-    private List<String> twoMostPopular(List<String> words) {
-        List<String> result = null;
-
+    private List<Tuple> reduce(List<String> words) {
         LinkedList<Tuple> tuples = new LinkedList<>();
 
         LinkedList<Tuple> tuples1 = map(words.subList(0, words.size() / 2));
@@ -70,7 +68,7 @@ public class MapReduce {
 
         }
 
-        return result;
+        return tuples;
     }
 
     private LinkedList<Tuple> map(List<String> words) {
@@ -80,11 +78,5 @@ public class MapReduce {
         }
         Collections.sort(tuples, comparator);
         return new LinkedList<>(tuples);
-    }
-
-    private List<Tuple> reduce(List<Tuple> tuples) {
-        List<Tuple> result = new LinkedList<>();
-
-        return result;
     }
 }
