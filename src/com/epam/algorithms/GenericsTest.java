@@ -1,10 +1,7 @@
 package com.epam.algorithms;
 
-import com.google.common.collect.Lists;
-
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.Collections;
 
 public class GenericsTest {
     static interface Bean<T, V> {
