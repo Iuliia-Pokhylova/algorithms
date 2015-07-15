@@ -16,7 +16,7 @@ public class BubbleSort {
 
     /*
      * In bubble sort we need n-1 iteration to sort n elements
-     * at end of first iteration larget number is sorted and subsequently numbers smaller
+     * at end of first iteration largest number is sorted and subsequently numbers smaller
      * than that.
      */
     public static void bubbleSort(int[] unsorted){
@@ -25,7 +25,7 @@ public class BubbleSort {
         // Outer loop - need n-1 iteration to sort n elements
         for(int i=0; i<unsorted.length -1; i++){
 
-            //Inner loop to perform comparision and swapping between adjacent numbers
+            //Inner loop to perform comparison and swapping between adjacent numbers
             //After each iteration one index from last is sorted
             for(int j= 1; j<unsorted.length -i; j++){
 

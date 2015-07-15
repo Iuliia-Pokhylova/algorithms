@@ -24,13 +24,13 @@ public class RectangleArea {
     }
 
     public static int computeArea2(int A, int B, int C, int D, int E, int F, int G, int H) {
-        int l = Math.max(A, E);
-        int r = Math.min(C, G);
-        if (l < r) {
-            int t = Math.min(D, H);
-            int b = Math.max(B, F);
-            if (t > b) {
-                return (C - A) * (D - B) - (r - l) * (t - b) + (G - E) * (H - F);
+        int left = Math.max(A, E);
+        int right = Math.min(C, G);
+        if (left < right) {
+            int top = Math.min(D, H);
+            int bottom = Math.max(B, F);
+            if (top > bottom) {
+                return (C - A) * (D - B) - (right - left) * (top - bottom) + (G - E) * (H - F);
             }
         }
         return (C - A) * (D - B) + (G - E) * (H - F);
