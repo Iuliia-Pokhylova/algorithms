@@ -34,9 +34,9 @@ public class CountInversions {
 
             // Merge both parts into resulting array
             for (int k = start, l = start, r = start + half; k < start + length; k ++) {
-                if (l < start + half && (r >= start + length || arr[l] < arr[r])) {
+                if (l < start + half && (r >= start + length || arr[l] <= arr[r])) {
                     tmp[k] = arr[l ++];
-                } else if (r < start + length && (l >= start + half || arr[l] >= arr[r])) {
+                } else if (r < start + length && (l >= start + half || arr[l] > arr[r])) {
                     if (l < start + half) { //inversion detected
                         cnt += start + half - l;
                     }
