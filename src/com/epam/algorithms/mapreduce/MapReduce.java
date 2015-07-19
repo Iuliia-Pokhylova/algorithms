@@ -9,14 +9,14 @@ import java.util.*;
  */
 public class MapReduce {
     public static void main(String[] args) {
-        (new MapReduce(new Comparator<Tuple>() {
-            @Override
-            public int compare(Tuple o1, Tuple o2) {
-                String w1 = o1 == null ? "" : o1.word;
-                String w2 = o2 == null ? "" : o2.word;
-                return w1.compareTo(w2);
-            }
-        })).execute();
+//        (new MapReduce(new Comparator<Tuple>() {
+//            @Override
+//            public int compare(Tuple o1, Tuple o2) {
+//                String w1 = o1 == null ? "" : o1.word;
+//                String w2 = o2 == null ? "" : o2.word;
+//                return w1.compareTo(w2);
+//            }
+//        })).execute();
     }
 
     class Tuple {
@@ -31,7 +31,7 @@ public class MapReduce {
     public void mapReduce() {
         List<String> words = Lists.newArrayList("foo", "baz", "bar", "dar", "foo", "bar", "baz", "bar");
 
-        System.out.println(Arrays.toString(twoMostPopular(words).toArray()));
+//        System.out.println(Arrays.toString(twoMostPopular(words).toArray()));
     }
 
     private Comparator<Tuple> comparator;
