@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-import static java.lang.Integer.max;
+//import static java.lang.Integer.max;
 
 /**
  * Created by driabchenko on 19/06/15.
